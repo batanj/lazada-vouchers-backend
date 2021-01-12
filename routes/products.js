@@ -45,6 +45,7 @@ router.post('/', [admin, validate(validateProduct)], async (req, res) => {
             const product = new Product(_.pick(
                 req.body,
                 [
+                    'parentCategoryId',
                     'categoryId',
                     'images',
                     'name',
