@@ -3,7 +3,6 @@ require('joi-objectid');
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
-    parentCategoryId: mongoose.Schema.Types.ObjectId,
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
@@ -36,7 +35,6 @@ const Product = mongoose.model('Product', productSchema);
 
 function validateProduct(product) {
     const schema = Joi.object({
-        parentCategoryId: Joi.objectId().label('Parent Category ID'),
         categoryId: Joi.objectId().required().label('Category ID'),
         images: Joi.string().required().label('Images'),
         name: Joi.string().required().label('Name'),

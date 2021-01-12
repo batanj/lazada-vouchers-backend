@@ -45,7 +45,6 @@ router.post('/', [admin, validate(validateProduct)], async (req, res) => {
             const product = new Product(_.pick(
                 req.body,
                 [
-                    'parentCategoryId',
                     'categoryId',
                     'images',
                     'name',
@@ -61,6 +60,7 @@ router.post('/', [admin, validate(validateProduct)], async (req, res) => {
             res.status(200).json(product);
         }
     } catch (e) {
+        console.log(e);
         res.status(400).json({ error: "An error occured." });
     }
 
